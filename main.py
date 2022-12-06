@@ -1,16 +1,8 @@
-from turtle import Turtle, Screen
+from turtle import Turtle, Screen, colormode
 import random
 
-import heroes
-print(heroes.gen())
-# class Pointer:
-#     def __init__(self, name):
-#         self.name = name
-#         pointer = Turtle(name)
-
-# pointer = Pointer("John")
-
 pointer = Turtle()
+colormode(255)
 
 # draw a box
 # for i in range (0,4):
@@ -62,7 +54,50 @@ pointer = Turtle()
 #     turn_random_direction()
 #     pointer.forward(40)
 
+#random walk with random color
+# def random_color():
+#     r = random.randint(0,255)
+#     g = random.randint(0,255)
+#     b = random.randint(0,255)
+#     tuple = (r,g,b)
+#     return tuple
+
+# directions = ['left', 'right', 'forward', 'back']
+
+# def turn_random_direction():
+#     random_direction = random.choice(directions)
+#     if random_direction == 'left':
+#         pointer.left(90)
+#     elif random_direction == 'right':
+#         pointer.right(90)
+#     elif random_direction == 'back':
+#         pointer.right(180)    
+
+# for i in range (100):
+#     pointer.pd()
+#     pointer.pensize(20)
+#     pointer.speed(10)
+#     pointer.color(random_color())
+#     turn_random_direction()
+#     pointer.forward(40)
     
+#spirograph
+def random_color():
+    r = random.randint(0,255)
+    g = random.randint(0,255)
+    b = random.randint(0,255)
+    tuple = (r,g,b)
+    return tuple
+
+
+for i in range (50):
+    pointer.speed("fastest")
+    pointer.pd()
+    pointer.color(random_color())
+    pointer.circle(100)
+    pointer.left(7.2)
+
+
 
 screen = Screen()
 screen.exitonclick()
