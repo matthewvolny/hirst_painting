@@ -1,5 +1,6 @@
 from turtle import Turtle, Screen, colormode
 import random
+import colorgram
 
 pointer = Turtle()
 colormode(255)
@@ -82,21 +83,55 @@ colormode(255)
 #     pointer.forward(40)
     
 #spirograph
-def random_color():
-    r = random.randint(0,255)
-    g = random.randint(0,255)
-    b = random.randint(0,255)
-    tuple = (r,g,b)
-    return tuple
+# def random_color():
+#     r = random.randint(0,255)
+#     g = random.randint(0,255)
+#     b = random.randint(0,255)
+#     tuple = (r,g,b)
+#     return tuple
 
 
-for i in range (50):
-    pointer.speed("fastest")
-    pointer.pd()
-    pointer.color(random_color())
-    pointer.circle(100)
-    pointer.left(7.2)
+# for i in range (50):
+#     pointer.speed("fastest")
+#     pointer.pd()
+#     pointer.color(random_color())
+#     pointer.circle(100)
+#     pointer.left(7.2)
 
+#hirst painting
+colors = colorgram.extract('image.jpg', 50)
+color_palette = []
+
+for color in colors:
+    color_palette.append(color.rgb)
+
+def draw_line(columns):
+    for i in range (columns):
+        pointer.pd()
+        pointer.speed("fastest")
+        pointer.dot(20, random.choice(color_palette))
+        pointer.pu()
+        pointer.forward(50)
+
+def draw_box(rows, columns):
+    pointer.hideturtle()
+    pointer.pu()
+    pointer.setheading(180)
+    pointer.forward(230)
+    pointer.setheading(270)
+    pointer.forward(220)
+    pointer.setheading(0)
+    for i in range (rows):
+        draw_line(columns)
+        pointer.left(90)
+        pointer.forward(50)
+        pointer.left(90)
+        pointer.forward(500)
+        pointer.left(180)
+
+
+
+draw_box(10, 10)
 
 
 screen = Screen()
